@@ -1,18 +1,23 @@
-interface newsState {
-  news: any[];
-  loading: boolean;
-  error: null | string;
-}
+import { NewsAction, NewsActionTypes, NewsState } from "../../types/news";
 
-const initialState: newsState = {
+const initialState: NewsState = {
   news: [],
   loading: false,
   error: null,
 };
 
-export const newsReducer = (state = initialState, action: any) => {
+export const newsReducer = (
+  state = initialState,
+  action: NewsAction
+): NewsState => {
   switch (action.type) {
+    case NewsActionTypes.FETCH_NEWS:
+      return { loading: true, error: null, news: [] };
+    case NewsActionTypes.FETCH_NEWS_SUCCESS:
+      return { loading: false, error: null, news: action.payload };
+    case NewsActionTypes.FETCH_NEWS_ERROR:
+      return { loading: false, error: action.payload, news: [] };
     default:
-      state;
+      return state;
   }
 };

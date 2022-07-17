@@ -12,7 +12,7 @@ const AppRouter = () => {
           element={<route.element></route.element>}
         />
       ))}
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="*" element={<Navigate to="/news" />} />
     </Routes>
   );
 };
