@@ -1,12 +1,14 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import thunk from "redux-thunk";
-import { configureStore } from "@reduxjs/toolkit";
-import { newsReducer } from "./reducers/newsReducer";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { newsAPI } from "../API/NewsService";
 
 const rootReducer = combineReducers({
-  news: newsReducer,
+  [newsAPI.reducerPath]: newsAPI.reducer,
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
-
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export const setupStore = () => {
+  return configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(newsAPI.middleware),
+  });
+};
