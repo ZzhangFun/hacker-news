@@ -1,14 +1,14 @@
 import React, { FC, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { fetchNews } from "../store/action-creators/news";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useAction } from "../hooks/useAction";
 
 const News: FC = () => {
   const { news, loading, error } = useTypedSelector((state) => state.news);
-  const dispatch = useDispatch();
+  const { fetchNews } = useAction();
 
   useEffect(() => {
-    dispatch(fetchNews());
+    fetchNews();
   }, []);
 
   if (loading) return <div>Типо загрузка</div>;
@@ -17,7 +17,7 @@ const News: FC = () => {
   return (
     <div>
       {news.map((n) => (
-        <div>{n.name}</div>
+        <div key={n.id}>{n.name}</div>
       ))}
     </div>
   );
