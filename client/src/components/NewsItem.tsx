@@ -7,12 +7,16 @@ interface NewsItemProps {
 }
 
 const NewsItem: FC<NewsItemProps> = ({ news }) => {
+  const time = new Date(news.time * 1000);
   return (
     <Link to={`/news/${news.id}`}>
       <h1>{news.title}</h1>
       <p>Author: {news.user}</p>
       <p>Rate: {news.points}</p>
-      <p>Date: {news.time}</p>
+      <p>
+        Date: {time.getDate()}.{time.getMonth()}.{time.getFullYear()}{" "}
+        {time.getHours()}:{time.getMinutes()}
+      </p>
     </Link>
   );
 };
