@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import { INewsId } from "../types/INewsId";
+import { CaretDownOutline, CaretUpOutline } from "react-ionicons";
 
 interface CommentProps {
   comment: INewsId;
@@ -11,14 +12,22 @@ const Comment: FC<CommentProps> = ({ comment, disable }) => {
   return disable ? (
     <></>
   ) : (
-    <div style={{ border: "2px solid Black" }}>
-      <p>{comment.user}</p>
-      <p dangerouslySetInnerHTML={{ __html: comment.content }}></p>
+    <>
+      <div className="comment">
+        <h3>{comment.user}</h3>
+        <p dangerouslySetInnerHTML={{ __html: comment.content }}></p>
+        {comment.comments_count !== 0 && (
+          <span className="rotate" onClick={() => setVisible((x) => !x)}>
+            {visible ? (
+              <CaretDownOutline color={"#0affa1"} />
+            ) : (
+              <CaretUpOutline color={"#0affa1"} />
+            )}
+          </span>
+        )}
+      </div>
       {comment.comments_count !== 0 && (
-        <>
-          <button onClick={() => setVisible((x) => !x)}>
-            {visible ? "↓" : "↑"}
-          </button>
+        <div className={visible ? "child" : "child child-hide"}>
           {comment.comments.map((nestedComment) => (
             <Comment
               key={nestedComment.id}
@@ -26,9 +35,9 @@ const Comment: FC<CommentProps> = ({ comment, disable }) => {
               disable={visible}
             />
           ))}
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

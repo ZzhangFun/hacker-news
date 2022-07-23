@@ -1,11 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
+import cl from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar: FC = () => {
   return (
-    <div className="navbar">
-      <div className="navbar__links">
-        <Link to="/news">News</Link>
+    <div className={cl.navbar}>
+      <div className={cl.navbar__links}>
+        <Link to="/news">
+          <p>News</p>
+        </Link>
       </div>
     </div>
   );

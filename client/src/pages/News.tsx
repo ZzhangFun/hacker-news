@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import NewsItem from "../components/NewsItem";
 import { useFetchAllNews } from "../hooks/useFetchAllNews";
+import Loader from "../components/UI/Loader/Loader";
 
 const News: FC = () => {
   const { news, isLoading } = useFetchAllNews();
-  if (isLoading) return <>Типо загрузка...</>;
+  if (isLoading) return <Loader />;
   return (
-    <div className="newsBox">
+    <div className="newsBox news__height">
       {news && news.map((n) => <NewsItem key={n.id} news={n} />)};
     </div>
   );

@@ -1,0 +1,23 @@
+.loader {
+    width: 8vmax;
+    height: 8vmax;
+    border-radius: 50%;
+    border: 3px dashed aquamarine;
+    animation: loading 2s infinite linear;
+    margin: 10vmax auto;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        transform: rotate(180deg) scale(0.5);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.5);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
