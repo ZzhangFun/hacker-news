@@ -9,9 +9,7 @@ interface CommentProps {
 
 const Comment: FC<CommentProps> = ({ comment, disable }) => {
   const [visible, setVisible] = useState<boolean>(true);
-  return disable ? (
-    <></>
-  ) : (
+  return disable ? null : (
     <>
       <div className="comment">
         <h3>{comment.user}</h3>

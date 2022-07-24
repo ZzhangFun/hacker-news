@@ -29,7 +29,6 @@ a {
 .newsBox {
     overflow: auto;
     margin: 0 5vmax;
-    padding: 10px;
 }
 
 .newsBox::-webkit-scrollbar {
@@ -44,13 +43,17 @@ a {
     border-radius: 20px;
     border: 3px solid orange;
 }
+.reload {
+    margin-left: 10px;
+}
+
 .newsItem {
     display: flex;
     flex-direction: column;
     background-color: #1c1b22;
     border-radius: 10px;
     padding: 15px 20px;
-    margin: 20px 20px;
+    margin-bottom: 20px;
     -webkit-user-select: none;
     color: aquamarine;
 }
@@ -66,11 +69,9 @@ a {
     color: antiquewhite;
 }
 
-.newsItem h2{
-    padding-top: 10px;
-    font-size: 20px;
+.newsItem__author {
     color: antiquewhite;
-
+    justify-content: left !important;
 }
 
 .newsItem h3 {
@@ -98,12 +99,6 @@ a {
 .newsIdPage p {
     padding-top: 10px;
     color: antiquewhite;
-}
-.newsIdPage h2{
-    padding-top: 10px;
-    font-size: 20px;
-    color: antiquewhite;
-
 }
 .newsIdPage h3 {
     color: brown;

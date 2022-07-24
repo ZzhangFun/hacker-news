@@ -11,14 +11,9 @@ const NewsItem: FC<NewsItemProps> = ({ news }) => {
   return (
     <Link className="newsItem" to={`/news/${news.id}`}>
       <h1>{news.title}</h1>
-      <h2
-        style={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
+      <div className="newsItem__author">
         Author: <h3>{news.user}</h3>
-      </h2>
+      </div>
 
       <div>
         <p>Rate: {news.points}</p>

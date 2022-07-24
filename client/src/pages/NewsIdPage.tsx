@@ -5,6 +5,7 @@ import Comments from "../components/Comments";
 import Loader from "../components/UI/Loader/Loader";
 import Error from "../components/UI/Error/Error";
 import Back from "../components/UI/Back/Back";
+import { ReloadOutline } from "react-ionicons";
 
 const NewsIdPage: FC = () => {
   const params = useParams();
@@ -27,14 +28,9 @@ const NewsIdPage: FC = () => {
           <div className="newsIdPage">
             <h1>{page.title}</h1>
             <div>
-              <h2
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                }}
-              >
+              <div className="newsItem__author">
                 Author: <h3>{page?.user}</h3>
-              </h2>
+              </div>
               <Back />
             </div>
             <div>
@@ -52,7 +48,14 @@ const NewsIdPage: FC = () => {
             {page.comments_count !== 0
               ? `Comments: ${page.comments_count}`
               : "Comments not found"}
+            <span
+              onClick={() => console.log("Doesn`t work")}
+              className="reload"
+            >
+              <ReloadOutline color={"#0affa1"} rotate />
+            </span>
           </h1>
+
           {page.comments && <Comments comments={page.comments} />}
         </>
       )}
