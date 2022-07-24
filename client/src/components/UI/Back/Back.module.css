@@ -1,0 +1,15 @@
+
+.back {
+    position: relative;
+    display: flex;
+    justify-content: end;
+}
+
+
+.back p {
+    color: aqua;
+    border: 2px solid antiquewhite;
+    border-radius: 8px;
+    padding: 3px 3px;
+}
+
